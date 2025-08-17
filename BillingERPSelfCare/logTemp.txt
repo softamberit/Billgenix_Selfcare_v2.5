@@ -1,0 +1,136 @@
+10/22/2020 2:53:21 PM SEND=> CustomerID=CID-5963:: Collection Amount= 12:: IP=::1  
+10/22/2020 2:53:22 PM tran_id :CID-5963@a64d9984-49ac-408e-b751-3a66fdce239dAmount12
+10/22/2020 2:53:22 PM PaymentGateway:Thread was being aborted.
+10/24/2020 1:15:42 PM SEND=> CustomerID=CID-5963:: Collection Amount= 20:: IP=::1  
+10/24/2020 1:17:33 PM SEND=> CustomerID=CID-5963:: Collection Amount= 20:: IP=::1  
+10/24/2020 1:19:08 PM PaymentGateway:Thread was being aborted.
+10/24/2020 1:24:20 PM SEND=> CustomerID=44301:: Collection Amount= 20:: IP=::1  
+10/24/2020 1:25:20 PM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+10/24/2020 1:26:42 PM PaymentGateway:Thread was being aborted.
+11/16/2020 6:24:03 PM SEND=> CustomerID=44301:: Collection Amount= 12:: IP=::1  
+11/16/2020 6:24:05 PM PaymentGateway:Thread was being aborted.
+12/10/2020 4:27:34 PM SEND=> CustomerID=CID-5963:: Collection Amount= 12:: IP=::1  
+12/10/2020 4:27:37 PM PaymentGateway:Thread was being aborted.
+12/29/2020 2:59:50 PM SEND=> CustomerID=CID-5963:: Collection Amount= 11:: IP=::1  
+12/29/2020 2:59:51 PM Unable to get data from SSLCommerz. Please contact your manager!
+12/29/2020 2:59:51 PM Unable to get data from SSLCommerz. Please contact your manager!
+12/29/2020 2:59:51 PM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+12/29/2020 3:02:05 PM SEND=> CustomerID=CID-5963:: Collection Amount= 12:: IP=::1  
+12/29/2020 3:02:06 PM Unable to get data from SSLCommerz. Please contact your manager!
+12/29/2020 3:02:06 PM Unable to get data from SSLCommerz. Please contact your manager!
+12/29/2020 3:02:06 PM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+1/1/2021 10:02:29 PM SEND=> CustomerID=CID-5963:: Collection Amount= 12:: IP=::1  
+1/1/2021 10:02:31 PM PaymentGateway:Thread was being aborted.
+1/1/2021 10:06:01 PM SEND=> CustomerID=CID-5963:: Collection Amount= 12:: IP=::1  
+1/1/2021 10:06:01 PM PaymentGateway:Thread was being aborted.
+20/12/2022 11:40:08 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+20/12/2022 11:40:26 PaymentGateway:Thread was being aborted.
+20/12/2022 11:40:47 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+20/12/2022 11:42:07 PaymentGateway:Thread was being aborted.
+20/12/2022 11:42:32 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+20/12/2022 11:44:10 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+20/12/2022 11:45:33 SEND=> CustomerID=74039 Thread was being aborted.
+20/12/2022 11:45:36 PaymentGateway:Thread was being aborted.
+20/12/2022 11:45:50 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+20/12/2022 11:46:17 PaymentGateway:Thread was being aborted.
+20/12/2022 12:24:28 SEND=> CustomerID=74039:: Collection Amount= 11:: IP=::1  
+20/12/2022 12:24:31 PaymentGateway:Thread was being aborted.
+20/12/2022 12:25:41 Not Found Transaction Status
+20/12/2022 12:29:32 SEND=> CustomerID=74039:: Collection Amount= 12:: IP=::1  
+20/12/2022 12:29:32 PaymentGateway:Thread was being aborted.
+20/12/2022 12:31:35 Not Found Transaction Status
+2024-07-11 18:29:21 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=127.0.0.1  
+2024-07-11 18:29:22 PaymentGateway:Thread was being aborted.
+2024-07-11 18:30:16 {"status":"VALIDATED","tran_date":"2024-07-11 18:29:20","tran_id":"74039@79ce102f-2dfe-471a-8428-e1ed1927c418","val_id":"2407111830031532707963288bb","amount":"10.00","store_amount":"9.80","currency":"BDT","bank_tran_id":"BGT812720240711135469","card_type":"BKASH-BKash","card_no":"KXBGB029338A","card_issuer":"BKash Mobile Banking","card_brand":"MOBILEBANKING","card_category":"MOBILE","card_sub_brand":"MB","card_issuer_country":"Bangladesh","card_issuer_country_code":"BD","currency_type":"BDT","currency_amount":"10.00","currency_rate":"1.0000","addition_charge":"0","base_fair":"0.00","value_a":"ref00","value_b":"ref00","value_c":"ref00","value_d":"ref00","card_id":"","emi_instalment":"0","emi_amount":"0.00","emi_description":"","emi_issuer":"","risk_title":"Safe","risk_level":"0","discount_percentage":"0.00","discount_remarks":"","discount_amount":0,"APIConnect":"DONE","validated_on":"2024-07-11 18:30:03","gw_version":"4.00","payment_channel":"1001","card_ref_id":"","cus_name":"ABC XY","cus_email":"abc.xyz@mail.co","cus_phone":"00111111111","campaign_code":""}
+2024-08-10 09:36:59 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=127.0.0.1  
+2024-08-10 09:36:59 PaymentGateway:Thread was being aborted.
+2024-08-10 09:38:12 {"status":"VALIDATED","tran_date":"2024-08-10 09:36:58","tran_id":"74039@590bd607-aa67-4782-9f82-d517ffb1d77c","val_id":"2408109380417411121504b6ec","amount":"10.00","store_amount":"9.80","currency":"BDT","bank_tran_id":"BGT60432024081025788","card_type":"BKASH-BKash","card_no":"KXBHA7KW6IKV","card_issuer":"BKash Mobile Banking","card_brand":"MOBILEBANKING","card_category":"MOBILE","card_sub_brand":"MB","card_issuer_country":"Bangladesh","card_issuer_country_code":"BD","currency_type":"BDT","currency_amount":"10.00","currency_rate":"1.0000","addition_charge":"0","base_fair":"0.00","value_a":"ref00","value_b":"ref00","value_c":"ref00","value_d":"ref00","card_id":"","emi_instalment":"0","emi_amount":"0.00","emi_description":"","emi_issuer":"","risk_title":"Safe","risk_level":"0","discount_percentage":"0.00","discount_remarks":"","discount_amount":0,"APIConnect":"DONE","validated_on":"2024-08-10 09:38:05","gw_version":"4.00","payment_channel":"1001","card_ref_id":"","cus_name":"ABC XY","cus_email":"abc.xyz@mail.co","cus_phone":"00111111111","campaign_code":""}
+2024-11-17 12:48:46 Not Found Transaction Status
+2024-11-17 12:49:39 SEND=> CustomerID=74039:: Collection Amount= 10:: IP=127.0.0.1  
+2024-11-17 12:49:40 PaymentGateway:Thread was being aborted.
+2024-11-17 12:50:43 Not Found Transaction Status
+2024-11-17 12:50:56 Not Found Transaction Status
+2024-11-17 12:51:30 Not Found Transaction Status
+2024-11-17 12:55:28 Object reference not set to an instance of an object.
+2024-11-17 12:55:29 GetResponseDataObject reference not set to an instance of an object.
+2024-11-17 12:55:29 orderValidation: Object reference not set to an instance of an object. BillingERPSelfCare
+11/20/2024 10:53:43 AM SEND=> CustomerID=74039:: Collection Amount= 1:: IP=::1  
+11/20/2024 10:53:44 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 10:53:44 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 10:53:44 AM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:00:45 AM SEND=> CustomerID=209474:: Collection Amount= 1:: IP=::1  
+11/20/2024 11:00:45 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:00:45 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:00:45 AM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:01:01 AM SEND=> CustomerID=209474:: Collection Amount= 1:: IP=::1  
+11/20/2024 11:01:01 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:01:01 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:01:01 AM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:06:56 AM SEND=> CustomerID=209474:: Collection Amount= 1:: IP=::1  
+11/20/2024 11:06:56 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:06:56 AM Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:06:56 AM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+11/20/2024 11:08:10 AM SEND=> CustomerID=209474:: Collection Amount= 10:: IP=::1  
+11/20/2024 11:08:11 AM PaymentGateway:Thread was being aborted.
+11/20/2024 11:17:18 AM SEND=> CustomerID=209474:: Collection Amount= 10:: IP=::1  
+11/20/2024 11:17:18 AM PaymentGateway:Thread was being aborted.
+11/20/2024 11:17:59 AM PaymentGateway:Thread was being aborted.
+11/20/2024 11:18:39 AM PaymentGateway:Thread was being aborted.
+11/20/2024 11:19:06 AM PaymentGateway:Thread was being aborted.
+11/21/2024 11:03:45 AM SEND=> CustomerID=209474:: Collection Amount= 10:: IP=::1  
+11/21/2024 11:03:46 AM PaymentGateway:Thread was being aborted.
+11/23/2024 1:46:06 PM SEND=> CustomerID=209474:: Collection Amount= 10:: IP=::1  
+11/23/2024 1:46:06 PM SEND=> CustomerID=209474:: Collection Amount= 10:: IP=::1  
+11/23/2024 1:46:06 PM PaymentGateway:Thread was being aborted.
+11/23/2024 1:47:47 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/23/2024 1:47:47 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/23/2024 1:47:48 PM PaymentGateway:Thread was being aborted.
+11/23/2024 1:48:20 PM SEND=> CustomerID=74039:: Collection Amount= 1:: IP=::1  
+11/23/2024 1:48:20 PM SEND=> CustomerID=74039:: Collection Amount= 1:: IP=::1  
+11/23/2024 1:48:20 PM Unable to get data from SSLCommerz. Please contact your manager!
+11/23/2024 1:48:20 PM Unable to get data from SSLCommerz. Please contact your manager!
+11/23/2024 1:48:20 PM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+11/23/2024 1:48:26 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/23/2024 1:48:26 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/23/2024 1:48:27 PM PaymentGateway:Thread was being aborted.
+11/23/2024 2:46:42 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/23/2024 2:47:14 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/23/2024 2:47:24 PM PaymentGateway:Thread was being aborted.
+11/23/2024 2:47:43 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/23/2024 2:51:36 PM SEND=> CustomerID=74039:: Collection Amount= 1:: IP=::1  
+11/23/2024 2:51:53 PM SEND=> CustomerID=74039:: Collection Amount= 1:: IP=::1  
+11/23/2024 2:52:04 PM Unable to get data from SSLCommerz. Please contact your manager!
+11/23/2024 2:52:04 PM Unable to get data from SSLCommerz. Please contact your manager!
+11/23/2024 2:52:04 PM PaymentGateway:Unable to get data from SSLCommerz. Please contact your manager!
+11/25/2024 11:58:45 AM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 11:59:50 AM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:00:05 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:00:33 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:01:15 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:04:30 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:04:54 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:09:41 PM SEND=> CustomerID=74039:: Collection Amount= 50:: IP=::1  
+11/25/2024 12:14:11 PM SEND=> CustomerID=74039:: Collection Amount= 50:: IP=::1  
+11/25/2024 12:14:31 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:15:24 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:17:25 PM SEND=> CustomerID=74039:: Collection Amount= 50:: IP=::1  
+11/25/2024 12:18:02 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:25:26 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:36:07 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:36:30 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:40:13 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 12:45:56 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 2:39:39 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 4:03:11 PM SEND=> CustomerID=74039 Thread was being aborted.
+11/25/2024 4:05:27 PM SEND=> CustomerID=74039 An error occurred while executing the request.
+11/25/2024 4:06:21 PM SEND=> CustomerID=74039 An error occurred while executing the request.
+11/25/2024 4:07:31 PM SEND=> CustomerID=74039 An error occurred while executing the request.
+11/25/2024 4:10:33 PM SEND=> CustomerID=74039 Thread was being aborted.
+11/25/2024 4:54:23 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+11/25/2024 4:57:30 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+12/1/2024 2:46:58 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+12/1/2024 2:47:10 PM PaymentGateway:Thread was being aborted.
+12/1/2024 3:07:05 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+12/1/2024 3:07:08 PM PaymentGateway:Thread was being aborted.
+12/1/2024 3:29:01 PM SEND=> CustomerID=74039:: Collection Amount= 10:: IP=::1  
+12/1/2024 3:29:01 PM PaymentGateway:Thread was being aborted.

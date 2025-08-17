@@ -1,0 +1,67 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+TestResults/
+out/
+publish/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+.vscode/
+*.dbmdl
+*.pdb
+*.cache
+*.config
+*.ide
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.psmdcp
+
+# Dotnet-specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.deps.json
+*.runtimeconfig.json
+
+# ASP.NET files
+App_Data/
+*.log
+
+# Others
+*.tmp
+*.bak
+*.swp
+*.sln.ide
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Rider
+.idea/
+*.sln.iml
+
+# Docker
+docker-compose.override.yml
+.env
+
+# Ignore test coverage results
+coverage/
+*.coverage
+*.coveragexml
+
+# Ignore publish profiles
+Properties/PublishProfiles/
+
+# Ignore secrets
+secrets.json

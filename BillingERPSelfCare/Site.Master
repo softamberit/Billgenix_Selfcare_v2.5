@@ -1,0 +1,281 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="BillingERPSelfCare.SiteMaster" %>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%--    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">--%>
+
+    <title>My Swift | Amber IT </title>
+
+
+    <asp:PlaceHolder ID="headPlaceHolder" runat="server">
+
+
+        <link rel="stylesheet" href="<%=ResolveUrl("css/bootstrap.min.css")%>" />
+        <link rel="stylesheet" href="<%=ResolveUrl("fonts/icomoon/icomoon.css")%>" />
+        <link rel="stylesheet" href="<%=ResolveUrl("css/main.css")%>" />
+
+
+
+        <link rel="shortcut icon" href="<%=ResolveUrl("img/favicon.ico")%>" />
+
+
+
+
+
+        <script src="<%=ResolveUrl("js/jquery.js")%>"></script>
+        <script src="<%=ResolveUrl("js/tether.min.js")%>"></script>
+        <script src="<%=ResolveUrl("js/bootstrap.min.js")%>"></script>
+        <script src="<%=ResolveUrl("vendor/unifyMenu/unifyMenu.js")%>"></script>
+        <script src="<%=ResolveUrl("vendor/onoffcanvas/onoffcanvas.js")%>"></script>
+        <script src="<%=ResolveUrl("js/moment.js")%>"></script>
+
+        <script src="<%=ResolveUrl("vendor/slimscroll/slimscroll.min.js")%>"></script>
+        <script src="<%=ResolveUrl("vendor/slimscroll/custom-scrollbar.js")%>"></script>
+
+        <script src="<%=ResolveUrl("js/common.js")%>"></script>
+
+
+
+        <style>
+            .form-group {
+                margin-bottom: .2rem !important;
+            }
+        </style>
+
+
+
+
+    </asp:PlaceHolder>
+
+</head>
+<body>
+    <form runat="server" idd="frmMain">
+
+        <asp:ScriptManager ID="scrManager1" runat="server"></asp:ScriptManager>
+
+        <!-- BEGIN .app-wrap -->
+        <div class="app-wrap">
+            <!-- BEGIN .app-heading -->
+            <header class="app-header">
+                <div class="container-fluid">
+                    <div class="row gutters">
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-3 col-4">
+                            <a class="mini-nav-btn" href="#" id="app-side-mini-toggler">
+                                <i class="icon-menu5"></i>
+                            </a>
+                            <a href="#app-side" data-toggle="onoffcanvas" class="onoffcanvas-toggler" aria-expanded="true">
+                                <i class="icon-chevron-thin-left"></i>
+                            </a>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-4">
+                            <a href="https://www.amberit.com.bd/" class="login-logo">
+                                <img src="/img/logo.png" alt="Amber IT Ltd." />
+                            </a>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-3 col-4">
+                            <ul class="header-actions">
+
+                                <li class="dropdown">
+                                    <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+                                        <img class="avatar" src="<%=ResolveUrl("img/user.png")%>" alt="User Thumb" />
+
+                                        <asp:Label ID="lblUser" runat="server" CssClass="user-name"></asp:Label>
+                                        <i class="icon-chevron-small-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu lg dropdown-menu-right" aria-labelledby="userSettings">
+                                        <ul class="user-settings-list">
+                                            <li>
+                                                <a href="<%=ResolveUrl("~/Sales/CustomerDetail.aspx") %>">
+                                                    <div class="icon">
+                                                        <i class="icon-account_circle"></i>
+                                                    </div>
+                                                    <p>Profile</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%=ResolveUrl("~/Settings/PasswordChange.aspx") %>">
+                                                    <div class="icon red">
+                                                        <i class="icon-unlocked"></i>
+                                                    </div>
+                                                    <p>Change Password</p>
+                                                </a>
+                                            </li>
+                                            <%--                                            <li>
+                                                <a href="filters.html">
+                                                    <div class="icon yellow">
+                                                        <i class="icon-schedule"></i>
+                                                    </div>
+                                                    <p>Daily Activity</p>
+                                                </a>
+                                            </li>--%>
+                                        </ul>
+                                        <div class="logout-btn">
+                                            <a href="<%=ResolveUrl("~/LogOut.aspx") %>" class="btn btn-primary">Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END: .app-heading -->
+            <!-- BEGIN .app-container -->
+            <div class="app-container">
+                <!-- BEGIN .app-side -->
+                <aside class="app-side" id="app-side">
+                    <!-- BEGIN .side-content -->
+                    <div class="side-content " style="font-weight: 600; color: #000000">
+
+                        <nav class="side-nav">
+                            <!-- BEGIN: side-nav-content -->
+                            <ul class="unifyMenu" id="unifyMenu">
+
+
+                                <%-- <asp:Literal ID="ContentMenuLiteral" runat="server"></asp:Literal>--%>
+
+                                <li><a href="/Dashboard.aspx" class="has-arrow"><span class="has-icon"><i class="icon-laptop_windows"></i></span><span class="nav-title">DASHBOARD</span>  </a></li>
+
+                                <li><%--<a href="/Sales/CustomerQuery.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">Customer Query</span>  </a>--%></li>
+
+                                <li><a href="/Sales/CustomerDetail.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">PROFILE</span>  </a></li>
+
+                                <li><a href="/UI/Client/Payment.aspx" class="has-arrow"><span class="has-icon"><i class="icon-clipboard"></i></span><span class="nav-title">BILLS PAY</span>  </a></li>
+
+
+                                <%--<ul aria-expanded="false" class="collapse">
+                                        <li><a href="/Sales/CustomerDetail.aspx">View Info</a></li >
+                                       
+                                    </ul>--%>
+
+
+                                <li><a href="/Sales/RequestStatus.aspx" class="has-arrow"><span class="has-icon"><i class="icon-accessibility2"></i></span><span class="nav-title">REQUEST STATUS</span>  </a>
+
+                                    <%-- <ul aria-expanded="false" class="collapse">
+                                        <li><a href="/Sales/Packageupgradation.aspx">Package Upgradation</a></li>
+                                         <li><a href="/Sales/PackageDowngrade.aspx">Package Downgradation</a></li>
+                                        <li><a href="/Sales/RequestStatus.aspx">Request Status</a></li>
+                                        
+                                    </ul>--%>
+                                </li>
+
+                                <li><a href="/ApplicationReports/CustomerLedger.aspx" class="has-arrow"><span class="has-icon"><i class="icon-document3"></i></span><span class="nav-title">LEDGER</span></a>
+                                </li>
+
+                                <li><a href="/Accounts/PaymentDetails.aspx" class="has-arrow"><span class="has-icon"><i class="icon-th-menu"></i></span><span class="nav-title">PAYMENT LIST</span></a>
+                                </li>
+
+                                <li><a href="/Accounts/InvoiceDetails.aspx" class="has-arrow"><span class="has-icon"><i class="icon-th-list"></i></span><span class="nav-title">INVOICE LIST</span></a>
+                                </li>
+
+                                <li><a id="lnkDocUploadMenu" runat="server" href="/Sales/CustomerDocument.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">Document Upload</span>  </a></li>
+
+                              <%--  <li><a id="lnkChangeRequest" runat="server" href="/Sales/ChangeRequest.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">Change Request</span>  </a></li>--%>
+
+                                <li><a href="/Sales/SupportTicket.aspx" class="has-arrow"><span class="has-icon"><i class="icon-th-list"></i></span><span class="nav-title">SUPPORT TICKET</span></a>
+                                </li>
+
+                                <%--   <ul aria-expanded="false" class="collapse">
+                                        <li><a href="/ApplicationReports/CustomerLedger.aspx">Ledger</a></li>
+                                        <li><a href="/Accounts/PaymentDetails.aspx">Payment Details</a></li>
+                                        <li><a href="/Accounts/InvoiceDetails.aspx">Bill Details</a></li>
+                                        <li><%--<a href="/UI/Client/SSLCommerz/Payment.aspx">SSL Payment</a></li>
+                                    </ul>
+                                
+                                --%>
+                            </ul>
+                            <!-- END: side-nav-content -->
+                        </nav>
+                        <!-- END: .side-nav -->
+                    </div>
+                    <!-- END: .side-content -->
+                </aside>
+                <!-- END: .app-side -->
+
+                <!-- BEGIN .app-main -->
+                <div class="app-main">
+
+                    <!-- BEGIN .main-heading -->
+                    <header class="main-heading">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <div class="page-icon">
+                                        <i class="icon-center_focus_strong"></i>
+                                    </div>
+                                    <div class="page-title" style="padding-top: 7PX; font-weight: 900">
+                                        <h5 style="font-weight: 900">
+                                            <asp:Literal ID="ltlPageName" runat="server"></asp:Literal></h5>
+                                        <%--<h6 class="sub-heading">Welcome to Unify Admin Template</h6>--%>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3" id="DivHyperLink" runat="server">
+
+                                    <a href="/Sales/CustomerDocument.aspx" target="_self" style="color: blue; font-weight: bold; text-decoration: underline; float: right">Upload your NID and Photo</a>
+                                </div>
+
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+
+                                    <div class="btn-group ">
+                                        <%-- <asp:Button ID="Button1" Text="BILLS PAY" runat="server" class="btn btn-primary"
+                            Style="position: fixed; bottom: 7%; right: 2%" OnClick="btnPayment_Click" />--%>
+
+                                        <a href="/UI/Client/Payment.aspx" class="btn btn-primary" style="right: 0%">BILLS PAY</a>
+                                    </div>
+
+                                </div>
+                                <%--                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div class="right-actions">
+                                        <span class="last-login">Last Login Time:  </span>
+                                        <asp:Label runat="server" ID="LastloginTime"> </asp:Label>
+                                    </div>
+                                </div>--%>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- END: .main-heading -->
+
+                    <div class="main-content">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            <!-- BEGIN .main-content -->
+                            <!-- END: .main-content -->
+                        </asp:ContentPlaceHolder>
+                    </div>
+
+                </div>
+                <!-- END: .app-main -->
+
+            </div>
+            <!-- END: .app-container -->
+            <!-- BEGIN .main-footer -->
+
+
+
+            <%--<div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+                    <div class="btn-group ">
+                        <a href="/UI/Client/Payment.aspx" class="btn btn-primary" style="position: fixed; bottom: 7%; right: 2%">BILLS PAY</a>
+                    </div>
+                </div>
+
+            </div>--%>
+
+
+            <footer class="main-footer fixed-btm">
+                Copyright &copy 2024 <a href="https://www.amberit.com.bd/" target="_blank">Amber IT Limited</a>
+		
+            </footer>
+            <!-- END: .main-footer -->
+        </div>
+        <!-- END: .app-wrap -->
+
+    </form>
+</body>
+</html>
