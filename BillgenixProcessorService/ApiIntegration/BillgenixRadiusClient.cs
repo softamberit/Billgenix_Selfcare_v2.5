@@ -1,4 +1,6 @@
-﻿using BillgenixProcessorService.Models;
+﻿using BillgenixProcessorService.Extensions;
+using BillgenixProcessorService.Models;
+using Common.Infrastructure.Models;
 using Newtonsoft.Json;
 
 namespace BillgenixProcessorService.ApiIntegration
@@ -9,58 +11,14 @@ namespace BillgenixProcessorService.ApiIntegration
         private readonly AppSettings _setting;
 
 
-        public BillgenixRadiusClient(AppSettings setting, HttpClient client)
+        public BillgenixRadiusClient(AppSettingsSevice setting, HttpClient client)
         {
             var uri = new Uri(setting.baseUrlRadiusAPI);
             _httpClient = client;
             _httpClient.BaseAddress = uri;
         }
 
-        //public MkStatus GetMkStatus(string cid)
-        //{
-        //    var status = new MkStatus();
-        //    try
-        //    {
-        //        HttpResponseMessage response = httpClient.GetAsync("/api/Radius/GetMkStatus?cid=" + cid).Result;
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            string responseBody = response.Content.ReadAsStringAsync().Result;
-        //            status = JsonConvert.DeserializeObject<MkStatus>(responseBody);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        status.RetMessage = "MIKROTIK NOT RESPONED";
-        //    }
-        //    return status;
-        //}
-
-
-        //public string GetMrtgGraphBase64(string cid)
-        //{
-
-
-        //    try
-        //    {
-        //        HttpResponseMessage response = httpClient.GetAsync(string.Format("/api/Mrtg/GraphByCID?cid={0}", cid)).Result;
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            string responseBody = response.Content.ReadAsStringAsync().Result;
-        //            if (!string.IsNullOrEmpty(responseBody))
-        //            {
-        //                return JsonConvert.DeserializeObject(responseBody).ToString();
-
-        //            }
-
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //    }
-        //    return "";
-        //}
-
+        
         public CustomerTraffic GetTrafficData(string cid)
         {
             try

@@ -3,11 +3,9 @@ using BillgenixTicketing.Models;
 using BillingERPConn;
 using BillingERPSelfCare.Session;
 using BillingERPSelfCare.Utility;
-using MkCommunication;
 using System;
 using System.Collections;
 using System.Data;
-using System.Drawing;
 using System.Web.UI.WebControls;
 
 namespace BillingERPSelfCare.Sales

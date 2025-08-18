@@ -1,9 +1,15 @@
+using BillgenixProcessorService.ApiIntegration;
+using BillgenixProcessorService.Extensions;
 using BillgenixProcessorService.Models;
 using BillgenixProcessorService.Processor.LiveTraffic;
+using BillgenixProcessorService.Repositories;
 using BillgenixProcessorService.ScheduleJob;
+using Common.Infrastructure.Common;
+using Common.Infrastructure.Models;
 using CrystalQuartz.AspNetCore;
 using Quartz;
 using Serilog;
+using Hangfire;
 var builder = WebApplication.CreateBuilder(args);
 
 //builder.Host.UseSerilog((context, loggerConfiguration) =>
@@ -25,7 +31,26 @@ builder.Services.ConfigureOptions<ConfigurationCustomerLiveTraffic>();
 var appSettingsSection = builder.Configuration.GetSection("AppSettings");
 builder.Services.Configure<AppSettings>(appSettingsSection);
 var appSettings = appSettingsSection.Get<AppSettings>();
+appSettings.ConnectionString_billgenix = builder.Configuration.GetConnectionString("Billgenix");
+var AppSettingsService = new AppSettingsSevice
+{
+    baseUrlRadiusAPI = builder.Configuration.GetSection("AppSettings:baseUrlRadiusAPI").Value!
+};
+//appSettings.ConnectionString_billgenix = builder.Configuration.GetSection("AppSettings:baseUrlRadiusAPI");
+
+var billgenixDb = new DbSettings
+{
+    ConnectionString = appSettings.ConnectionString_billgenix,
+    DbServer = DbServer.MSSQL
+};
 builder.Services.AddSingleton(appSettings);
+builder.Services.AddSingleton(AppSettingsService);
+
+builder.Services.AddKeyedSingleton<IConnectionFactory>("billgenix", new ConnectionFactory(billgenixDb));
+
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<BillgenixRadiusClient>();
+builder.Services.AddScoped<IBillgenixRepository, BillgenixRepository>();
 
 builder.Services.AddQuartz();
 builder.Services.AddQuartzHostedService(options =>
@@ -49,26 +74,42 @@ builder.Services.AddCors(options =>
         );
 });
 
+//// Add Hangfire services.
+builder.Services.AddHangfire(configuration => configuration
+    .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+    .UseSimpleAssemblyNameTypeSerializer()
+    .UseRecommendedSerializerSettings()
+    .UseFilter(new AutomaticRetryAttribute { Attempts = 0 })
+    .UseInMemoryStorage());
+
+//Add the processing server as IHostedService
+builder.Services.AddHangfireServer();
+
 
 var app = builder.Build();
-
+app.UseRouting();
 app.UseCors("CorsPolicy");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 //app.UseSerilogRequestLogging();
-app.UseRouting();
+
 //app.MapControllerRoute("default", "hangfire");
 
-IScheduler schedules = await QuartzScheduleJob.GetSchedulers();
+//IScheduler schedules = await QuartzScheduleJob.GetSchedulers();
 
-app.UseCrystalQuartz(() => schedules);
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHub<CustomerTrafficHub>("/trafficHub"); // Map Hub, for .net6 map it above end point with app.MapHub<>
+//app.UseCrystalQuartz(() => schedules);
+app.UseHangfireDashboard();
+app.MapHangfireDashboard();
 
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "hangfire");
-});
+app.MapHub<CustomerTrafficHub>("/trafficHub"); // Map Hub, for .net6 map it above end point with app.MapHub<>
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapHub<CustomerTrafficHub>("/trafficHub"); // Map Hub, for .net6 map it above end point with app.MapHub<>
+
+//    //endpoints.MapControllerRoute(
+//    //    name: "default",
+//    //    pattern: "hangfire");
+//});
 app.Run();

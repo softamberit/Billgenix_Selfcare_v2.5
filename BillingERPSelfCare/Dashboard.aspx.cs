@@ -100,41 +100,7 @@ namespace BillingERPSelfCare
         }
 
 
-        [WebMethod]
-        public static void GetTrafficData(string cid)
-        {
-            var traffic = new CustomerTraffic();
-
-            if (string.IsNullOrWhiteSpace(cid) || cid.Length > 10)
-            {
-                return; // return empty object if invalid
-            }
-
-            Thread.Sleep(2000);
-
-            // Your code here
-            BillgenixRadiusClient radiusClient = new BillgenixRadiusClient();
-
-            HttpContext context = HttpContext.Current;
-            context.Response.AppendHeader("Connection", "keep-alive");
-            context.Response.ContentType = "application/json";
-            context.Response.BufferOutput = false; // disable buffering
-            context.Response.Buffer = false;
-            context.Response.CacheControl = "no-cache";
-            context.Response.Flush();
-
-            for (int i = 0; i < 10; i++)
-            {
-                traffic = radiusClient.GetTrafficData(cid);
-                var respone = JsonConvert.SerializeObject(traffic);
-                context.Response.Write(respone);
-                context.Response.Flush();
-                Thread.Sleep(1000);
-            }
-
-
-
-        }
+      
 
     }
 }

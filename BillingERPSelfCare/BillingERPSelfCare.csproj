@@ -261,6 +261,7 @@
     <Content Include="logTemp.txt" />
     <Content Include="ResetPassOtp.aspx" />
     <Content Include="Sales\ChangeRequest.aspx" />
+    <Content Include="Sales\RealtimeTraffic.aspx" />
     <Content Include="Sales\CustomerDocument.aspx" />
     <Content Include="Sales\SupportTicket.aspx" />
     <Content Include="ResetPassword.aspx" />
@@ -582,7 +583,6 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\CustomerTrafficHub.cs" />
     <Compile Include="Models\CustomerTraffic.cs" />
     <Compile Include="Models\MkStatus.cs" />
     <Compile Include="ResetPassOtp.aspx.cs">
@@ -598,6 +598,13 @@
     </Compile>
     <Compile Include="Sales\ChangeRequest.aspx.designer.cs">
       <DependentUpon>ChangeRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\RealtimeTraffic.aspx.cs">
+      <DependentUpon>RealtimeTraffic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\RealtimeTraffic.aspx.designer.cs">
+      <DependentUpon>RealtimeTraffic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sales\CustomerDocument.aspx.cs">
       <DependentUpon>CustomerDocument.aspx</DependentUpon>
@@ -789,10 +796,6 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MkCommunication\MkCommunication.csproj">
-      <Project>{3DF6C901-1FAD-4FE2-B2DE-751B78D417B7}</Project>
-      <Name>MkCommunication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ReportBilling\ReportBilling.csproj">
       <Project>{C3C2B8ED-A49A-428D-B60A-BE796941A99D}</Project>
       <Name>ReportBilling</Name>

@@ -140,6 +140,7 @@
                                 <%-- <asp:Literal ID="ContentMenuLiteral" runat="server"></asp:Literal>--%>
 
                                 <li><a href="/Dashboard.aspx" class="has-arrow"><span class="has-icon"><i class="icon-laptop_windows"></i></span><span class="nav-title">DASHBOARD</span>  </a></li>
+                                <li><a href="/Sales/RealtimeTraffic.aspx#" class="has-arrow"><span class="has-icon"><i class="icon-laptop_windows"></i></span><span class="nav-title">REALTIME TRAFFIC</span>  </a></li>
 
                                 <li><%--<a href="/Sales/CustomerQuery.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">Customer Query</span>  </a>--%></li>
 

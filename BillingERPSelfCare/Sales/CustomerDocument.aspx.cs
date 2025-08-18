@@ -1,17 +1,15 @@
-﻿using BillingERPSelfCare.Utility;
-using BillingERPConn;
+﻿using BillingERPConn;
+using BillingERPSelfCare.Session;
+using BillingERPSelfCare.Utility;
 using System;
 using System.Collections;
 using System.Data;
-using System.Drawing;
-using System.Web.UI.WebControls;
-using BillingERPSelfCare.Session;
-using MkCommunication;
 using System.IO;
-using System.Web;
-using Telerik.Web.UI;
 using System.Net;
+using System.Web;
 using System.Web.Configuration;
+using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace BillingERPSelfCare.Sales
 {

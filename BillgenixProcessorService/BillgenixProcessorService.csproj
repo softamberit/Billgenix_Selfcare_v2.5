@@ -8,14 +8,27 @@
 
   <ItemGroup>
     <PackageReference Include="CrystalQuartz.AspNetCore" Version="7.1.0" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Hangfire" Version="1.8.21" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.8.21" />
+    <PackageReference Include="Hangfire.InMemory" Version="1.0.0" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.8.21" />
     <PackageReference Include="MassTransit.Quartz" Version="8.5.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="6.0.4" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog" Version="4.2.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Processor\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Common.Infrastructure">
+      <HintPath>dll\Common.Infrastructure.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
