@@ -7,83 +7,74 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BillingERPSelfCare
+namespace BillingERPSelfCare.Sales
 {
 
 
-    public partial class SiteMaster
+    public partial class MrtgGraphs
     {
 
         /// <summary>
-        /// headPlaceHolder control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder headPlaceHolder;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// scrManager1 control.
+        /// hdnCustomerId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager scrManager1;
+        protected global::System.Web.UI.WebControls.HiddenField hdnCustomerId;
 
         /// <summary>
-        /// lblUser control.
+        /// hdnHubUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUser;
+        protected global::System.Web.UI.WebControls.HiddenField hdnHubUrl;
 
         /// <summary>
-        /// mntraffic control.
+        /// imgDailyGraph control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mntraffic;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgDailyGraph;
 
         /// <summary>
-        /// lnkDocUploadMenu control.
+        /// imgWeekly control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkDocUploadMenu;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgWeekly;
 
         /// <summary>
-        /// ltlPageName control.
+        /// imgMonthly control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlPageName;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgMonthly;
 
         /// <summary>
-        /// DivHyperLink control.
+        /// imgYearly control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivHyperLink;
-
-        /// <summary>
-        /// MainContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgYearly;
     }
 }

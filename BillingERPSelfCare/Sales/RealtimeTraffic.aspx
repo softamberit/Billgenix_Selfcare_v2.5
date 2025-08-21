@@ -23,25 +23,29 @@
 
 
     <script>
+       
+
         $(document).ready(function () {
             var cid = $("#<%=hdnCustomerId.ClientID%>")[0].value;
             var baseHubUrl = $("#<%=hdnHubUrl.ClientID%>")[0].value;
 
             drawGraph(cid);
-            debugger;
-
+            
             const connection = new signalR.HubConnectionBuilder()
                 .withUrl(baseHubUrl + "trafficHub?cid=" + cid + "")
                 .withAutomaticReconnect()
                 .build();
-            connection.on("UserConnected", function (data) {
 
+
+           
+            connection.on("UserConnected", function (data) {
+               
                 console.log("Connected: " + data);
-                RequestTrafficData(data);
+                RequestTrafficData(data, connection);
             });
             connection.on("traffics", function (traffic) {
                 var data = JSON.parse(traffic);
-                console.log(data);
+               // console.log(data);
                 setData(data);
             });
             connection.on("UpdateActiveUsers", function (message) {
@@ -57,21 +61,48 @@
 
         var chart;
         function drawGraph(cid) {
+
+             
+            Highcharts.setOptions({
+                global: {
+                    useUTC: false
+                },
+                time: {
+                    timezoneOffset: 6 * 60,
+                },
+            })
+
             chart = new Highcharts.Chart({
                 chart: {
+                    time: {
+                        useUTC: true // Ensure local time is used
+                    },
+                    //global: {
+                    //    /**
+                    //     * Use moment-timezone.js to return the timezone offset for individual
+                    //     * timestamps, used in the X axis labels and the tooltip header.
+                    //     */
+                    //    getTimezoneOffset: function (timestamp) {
+                    //        d = new Date();
+                    //        timezoneOffset = d.getTimezoneOffset()
+
+                    //        return timezoneOffset;
+                    //    }
+                    //},
+
                     renderTo: 'divCustomerTraffic',
-                    type: 'area',
+                    type: 'line',
                     marginRight: 10,
                     //events: getData(),
-                    zooming: {
-                        type: 'x'
-                    },
-                    panning: true,
-                    panKey: 'shift',
-                    scrollablePlotArea: {
-                        minWidth: 600,
-                        scrollPositionX: 1
-                    }
+                    //zooming: {
+                    //    type: 'x'
+                    //},
+                    //panning: true,
+                    //panKey: 'shift',
+                    //scrollablePlotArea: {
+                    //    minWidth: 800,
+                    //    scrollPositionX: 1
+                    //}
 
                 },
                 title: {
@@ -80,8 +111,8 @@
                 subtitle: {
                     text: 'Customer ID: ' + cid,
                     floating: true,
-                    align: 'right',
-                    verticalAlign: 'bottom',
+                    align: 'top',
+                    verticalAlign: 'top',
                     x: -100,
                     y: -110
                 },
@@ -99,11 +130,11 @@
                         text: 'Speed'
                     }
                 },
-                plotOptions: {
-                    series: {
-                        pointWidth: 2
-                    }
-                },
+                //plotOptions: {
+                //    series: {
+                //        pointWidth: 2
+                //    }
+                //},
 
                 tooltip: {
                     //the pop up one
@@ -120,20 +151,21 @@
                 },
 
                 legend: {
-                    enabled: false
+                    enabled: true,
+
                 },
 
                 series: [{
-                    name: 'Tx',
-                    color: 'red',
+                    name: 'Upload',
+                    color: 'green',
                     data: initializeGraph(),
-                    maxPointWidth: 2
+                    maxPointWidth: 1
                 },
                 {
-                    name: 'Rx',
+                    name: 'Download',
                     color: 'blue',
                     data: initializeGraph(),
-                    maxPointWidth: 2
+                    maxPointWidth: 1
                 }],
                 responsive: {
                     rules: [{
@@ -150,7 +182,7 @@
         }
         //get data from ajax call
 
-        function RequestTrafficData(data) {
+        function RequestTrafficData(data, connection) {
             var lastPos = 0;
             $.ajax({
                 type: "POST",
@@ -163,19 +195,25 @@
                 failure: function (response) {
                     console.log(response);
                     /*  alert(response.d);*/
+
+                    if (response !== 'Success') {
+                        alert(response);
+                    }
                 }
             });
         }
         function OnSuccess(response) {
-            console.log(response);
+            console.log(response); 
+            
+
             //setData(response.d);
         }
 
         function setData(traffic) {
 
-
-
-            var currentDate = new Date();
+            
+            let currentDate = new Date(traffic.Timestamp);
+            //var currentDate = new Date(traffic.Timestamp);
             var rx = parseFloat(traffic.Rx);
             var tx = parseFloat(traffic.Tx);
 
@@ -189,10 +227,10 @@
 
             document.getElementById("rx").innerHTML = value_rx.toFixed(2) + " " + unit_rx;
             document.getElementById("tx").innerHTML = value_tx.toFixed(2) + " " + unit_tx;
+
+
             chart.series[0].addPoint([currentDate.getTime(), rx], true, true);
             chart.series[1].addPoint([currentDate.getTime() + 200, tx], true, true);
-
-
 
         }
 
@@ -210,11 +248,6 @@
             return data;
         }
 
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
 
 
     </script>
@@ -233,8 +266,8 @@
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             
 
-                                            <div>Upload(TX):<span style="color:red;font:bold" id="tx"></span></div>
-                                            <div>Download(RX):<span style="color:blue;font:bold" id="rx"></span></div>
+                                            <div>Upload:<span style="color:green;font:bold" id="tx"></span></div>
+                                            <div>Download:<span style="color:blue;font:bold" id="rx"></span></div>
                                             
                                         </div>
 

@@ -1,5 +1,6 @@
 ﻿
 using BillingERPConn;
+using BillingERPSelfCare.Session;
 using System;
 using System.Web;
 using System.Web.UI;
@@ -72,8 +73,21 @@ namespace BillingERPSelfCare
             if (Session["PIN"] != null)
             {
 
-                string PinNo = Session["PIN"].ToString();
-                string IsOnlineCust = Session["IsOnlineCust"]?.ToString();
+                string PinNo = Session[SessionInfo.PIN].ToString();
+                string IsOnlineCust = Session[SessionInfo.IsOnlineCust]?.ToString();
+                string IsAllowedGraph = Session[SessionInfo.IsAllowedGraph]?.ToString();
+
+                if (IsAllowedGraph == "1")
+                {
+                    mntraffic.Visible = true;
+
+                } else
+                {
+                    mntraffic.Visible = false;
+
+                }
+
+
                 if (IsOnlineCust == "True")
                 {
                     lnkDocUploadMenu.Visible = true;

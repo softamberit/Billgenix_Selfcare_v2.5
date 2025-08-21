@@ -261,6 +261,7 @@
     <Content Include="logTemp.txt" />
     <Content Include="ResetPassOtp.aspx" />
     <Content Include="Sales\ChangeRequest.aspx" />
+    <Content Include="Sales\MrtgGraphs.aspx" />
     <Content Include="Sales\RealtimeTraffic.aspx" />
     <Content Include="Sales\CustomerDocument.aspx" />
     <Content Include="Sales\SupportTicket.aspx" />
@@ -598,6 +599,13 @@
     </Compile>
     <Compile Include="Sales\ChangeRequest.aspx.designer.cs">
       <DependentUpon>ChangeRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\MrtgGraphs.aspx.cs">
+      <DependentUpon>MrtgGraphs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\MrtgGraphs.aspx.designer.cs">
+      <DependentUpon>MrtgGraphs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sales\RealtimeTraffic.aspx.cs">
       <DependentUpon>RealtimeTraffic.aspx</DependentUpon>

@@ -42,6 +42,8 @@ public class CustomerTrafficHub : Hub
             await Clients.Client(receiverConnectionId).SendAsync("ReceivePrivateMessage", sender, message);
         }
     }
+        
+
     // Update the list of active users for all clients
     private async Task UpdateActiveUsers(string connectionId, string customerId)
     {

@@ -45,7 +45,13 @@
             .form-group {
                 margin-bottom: .2rem !important;
             }
+            .side-nav .unifyMenu ul a {
+    padding: .5em;
+    padding-left: 2rem;
+}
+ 
         </style>
+
 
 
 
@@ -133,63 +139,110 @@
                     <div class="side-content " style="font-weight: 600; color: #000000">
 
                         <nav class="side-nav">
-                            <!-- BEGIN: side-nav-content -->
+                           
+
                             <ul class="unifyMenu" id="unifyMenu">
 
+  <!-- Dashboard -->
+  <li>
+    <a href="/Dashboard.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-home"></i></span>
+      <span class="nav-title">DASHBOARD</span>
+    </a>
+  </li>
 
-                                <%-- <asp:Literal ID="ContentMenuLiteral" runat="server"></asp:Literal>--%>
+  <!-- Traffic -->
+  <li id="mntraffic" runat="server" visible="false">
+    <a href="#" class="has-arrow" aria-expanded="false">
+      <span class="has-icon"><i class="icon-network"></i></span>
+      <span class="nav-title">TRAFFIC</span>
+    </a>
+    <ul >
 
-                                <li><a href="/Dashboard.aspx" class="has-arrow"><span class="has-icon"><i class="icon-laptop_windows"></i></span><span class="nav-title">DASHBOARD</span>  </a></li>
-                                <li><a href="/Sales/RealtimeTraffic.aspx#" class="has-arrow"><span class="has-icon"><i class="icon-laptop_windows"></i></span><span class="nav-title">REALTIME TRAFFIC</span>  </a></li>
+      <!-- Live Traffic -->
+      <li>
+        <a href="/Sales/RealtimeTraffic.aspx#">
+          <span class="has-icon"><i class="icon-chart-line"></i></span>
+          LIVE TRAFFIC
+        </a>
+      </li>
 
-                                <li><%--<a href="/Sales/CustomerQuery.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">Customer Query</span>  </a>--%></li>
+      <!-- MRTG Graph -->
+      <li>
+        <a href="/Sales/MrtgGraphs.aspx#">
+          <span class="has-icon"><i class="icon-bargraph"></i></span>
+          MRTG GRAPH
+        </a>
+      </li>
+    </ul>
+  </li>
 
-                                <li><a href="/Sales/CustomerDetail.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">PROFILE</span>  </a></li>
+  <!-- Profile -->
+  <li>
+    <a href="/Sales/CustomerDetail.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-user"></i></span>
+      <span class="nav-title">PROFILE</span>
+    </a>
+  </li>
 
-                                <li><a href="/UI/Client/Payment.aspx" class="has-arrow"><span class="has-icon"><i class="icon-clipboard"></i></span><span class="nav-title">BILLS PAY</span>  </a></li>
+  <!-- Bills Pay -->
+  <li>
+    <a href="/UI/Client/Payment.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-credit-card"></i></span>
+      <span class="nav-title">BILLS PAY</span>
+    </a>
+  </li>
 
+  <!-- Request Status -->
+  <li>
+    <a href="/Sales/RequestStatus.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-spinner"></i></span>
+      <span class="nav-title">REQUEST STATUS</span>
+    </a>
+  </li>
 
-                                <%--<ul aria-expanded="false" class="collapse">
-                                        <li><a href="/Sales/CustomerDetail.aspx">View Info</a></li >
-                                       
-                                    </ul>--%>
+  <!-- Ledger -->
+  <li>
+    <a href="/ApplicationReports/CustomerLedger.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-book-open"></i></span>
+      <span class="nav-title">LEDGER</span>
+    </a>
+  </li>
 
+  <!-- Payment List -->
+  <li>
+    <a href="/Accounts/PaymentDetails.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-list2"></i></span>
+      <span class="nav-title">PAYMENT LIST</span>
+    </a>
+  </li>
 
-                                <li><a href="/Sales/RequestStatus.aspx" class="has-arrow"><span class="has-icon"><i class="icon-accessibility2"></i></span><span class="nav-title">REQUEST STATUS</span>  </a>
+  <!-- Invoice List -->
+  <li>
+    <a href="/Accounts/InvoiceDetails.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-file-text"></i></span>
+      <span class="nav-title">INVOICE LIST</span>
+    </a>
+  </li>
 
-                                    <%-- <ul aria-expanded="false" class="collapse">
-                                        <li><a href="/Sales/Packageupgradation.aspx">Package Upgradation</a></li>
-                                         <li><a href="/Sales/PackageDowngrade.aspx">Package Downgradation</a></li>
-                                        <li><a href="/Sales/RequestStatus.aspx">Request Status</a></li>
-                                        
-                                    </ul>--%>
-                                </li>
+  <!-- Document Upload -->
+  <li>
+    <a id="lnkDocUploadMenu" runat="server" href="/Sales/CustomerDocument.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-upload"></i></span>
+      <span class="nav-title">DOCUMENT UPLOAD</span>
+    </a>
+  </li>
 
-                                <li><a href="/ApplicationReports/CustomerLedger.aspx" class="has-arrow"><span class="has-icon"><i class="icon-document3"></i></span><span class="nav-title">LEDGER</span></a>
-                                </li>
+  <!-- Support Ticket -->
+  <%--<li>
+    <a href="/Sales/SupportTicket.aspx" class="has-arrow">
+      <span class="has-icon"><i class="icon-ticket"></i></span>
+      <span class="nav-title">SUPPORT TICKET</span>
+    </a>
+  </li>--%>
 
-                                <li><a href="/Accounts/PaymentDetails.aspx" class="has-arrow"><span class="has-icon"><i class="icon-th-menu"></i></span><span class="nav-title">PAYMENT LIST</span></a>
-                                </li>
+</ul>
 
-                                <li><a href="/Accounts/InvoiceDetails.aspx" class="has-arrow"><span class="has-icon"><i class="icon-th-list"></i></span><span class="nav-title">INVOICE LIST</span></a>
-                                </li>
-
-                                <li><a id="lnkDocUploadMenu" runat="server" href="/Sales/CustomerDocument.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">Document Upload</span>  </a></li>
-
-                              <%--  <li><a id="lnkChangeRequest" runat="server" href="/Sales/ChangeRequest.aspx" class="has-arrow"><span class="has-icon"><i class="icon-account_box"></i></span><span class="nav-title">Change Request</span>  </a></li>--%>
-
-                                <li><a href="/Sales/SupportTicket.aspx" class="has-arrow"><span class="has-icon"><i class="icon-th-list"></i></span><span class="nav-title">SUPPORT TICKET</span></a>
-                                </li>
-
-                                <%--   <ul aria-expanded="false" class="collapse">
-                                        <li><a href="/ApplicationReports/CustomerLedger.aspx">Ledger</a></li>
-                                        <li><a href="/Accounts/PaymentDetails.aspx">Payment Details</a></li>
-                                        <li><a href="/Accounts/InvoiceDetails.aspx">Bill Details</a></li>
-                                        <li><%--<a href="/UI/Client/SSLCommerz/Payment.aspx">SSL Payment</a></li>
-                                    </ul>
-                                
-                                --%>
-                            </ul>
                             <!-- END: side-nav-content -->
                         </nav>
                         <!-- END: .side-nav -->

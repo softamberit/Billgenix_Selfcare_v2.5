@@ -31,4 +31,10 @@ public class BillgenixRepository : IBillgenixRepository
         using var conn = _connectionFactory.CreateConnection();
         return await conn.ExecuteScalarAsync<int>("spUpdateTrafficRequestStatus", new { request.Id, request.ProcessStatus }, commandType: CommandType.StoredProcedure);
     }
+
+    public async Task<CustomerTrafficRequestDto> GetPendingTrafficRequest(string ConnectionId)
+    {
+        using var conn = _connectionFactory.CreateConnection();
+        return await conn.QueryFirstAsync<CustomerTrafficRequestDto>("sp_getPendingTrafficRequest",new { ConnectionId }, commandType: CommandType.StoredProcedure);
+    }
 }

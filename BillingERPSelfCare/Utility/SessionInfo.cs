@@ -64,7 +64,9 @@ namespace BillingERPSelfCare.Session
 
         public const string PublicIP = "PublicIP";
         public const string IsOnlineCust = "IsOnlineCust";
+        public const string IsAllowedGraph = "IsAllowedGraph";
 
+        
 
         public static string CompanyName { get; set; }
         public const string InvoiceId = "InvoiceId";

@@ -25,6 +25,18 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
         _client = client;
         _repo = repo;
     }
+
+    //_trafficHub.Clients.Client(request.ConnectionId)
+
+
+    public async Task TrafficStartAsync(string connectionId, string message)
+    {
+        //  await _trafficHub.Clients.Client(connectionId).SendAsync("ReceiveMessage", message);
+        var requests = await GetPendingRequests(connectionId);
+        BackgroundJob.Enqueue(() => ProcessTrafficAsync(requests));
+
+    }
+
     public async Task Execute(IJobExecutionContext context)
     {
 
@@ -33,7 +45,7 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
 
         var requests = await GetPendingRequests();
 
-
+   
         // string cid = "74039";
         //  _mkService.get
         //var username = Context.GetHttpContext()?.Request.Query["username"].ToString() ?? "Anonymous";
@@ -85,6 +97,7 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
 
     public async Task ProcessTrafficAsync(CustomerTrafficRequestDto request)
     {
+        //
         int seconds = request.TrafficDurationInMenutes * 60;
         for (int i = 0; i < seconds; i++)
         {
@@ -103,6 +116,12 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
     {
 
         return await _repo.GetPendingTrafficRequest();
+
+    }
+    private async Task<CustomerTrafficRequestDto> GetPendingRequests(string connectionId)
+    {
+
+        return await _repo.GetPendingTrafficRequest(connectionId);
 
     }
 

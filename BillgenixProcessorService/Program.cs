@@ -3,13 +3,12 @@ using BillgenixProcessorService.Extensions;
 using BillgenixProcessorService.Models;
 using BillgenixProcessorService.Processor.LiveTraffic;
 using BillgenixProcessorService.Repositories;
-using BillgenixProcessorService.ScheduleJob;
 using Common.Infrastructure.Common;
 using Common.Infrastructure.Models;
-using CrystalQuartz.AspNetCore;
-using Quartz;
-using Serilog;
 using Hangfire;
+using Hangfire.Dashboard;
+using Quartz;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //builder.Host.UseSerilog((context, loggerConfiguration) =>
@@ -66,7 +65,7 @@ builder.Services.AddCors(options =>
 {
 
     options.AddPolicy("CorsPolicy",
-        builder => builder.WithOrigins("http://localhost:15365")
+        builder => builder.WithOrigins("http://localhost:15365", "https://myswift.amberit.com.bd")
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials()
@@ -83,6 +82,8 @@ builder.Services.AddHangfire(configuration => configuration
     .UseInMemoryStorage());
 
 //Add the processing server as IHostedService
+
+
 builder.Services.AddHangfireServer();
 
 
@@ -100,8 +101,23 @@ app.UseAuthorization();
 //IScheduler schedules = await QuartzScheduleJob.GetSchedulers();
 
 //app.UseCrystalQuartz(() => schedules);
-app.UseHangfireDashboard();
-app.MapHangfireDashboard();
+
+//var options = new DashboardOptions
+//{
+//    Authorization = new[] { new AuthorizationFilter { Users = "admin, superuser" ,Roles=""}, }, // Allow all users to access the dashboard
+//};
+
+//app.UseHangfireDashboard("/amber_hangfire", new DashboardOptions
+//{
+//    IsReadOnlyFunc = (DashboardContext dashboardContext) =>
+//    {
+//        var context = dashboardContext.GetHttpContext();
+//        return !context.User.IsInRole("Admin");
+//    }
+//});
+//app.MapHangfireDashboard();
+
+app.MapGet("/", () => "Welcome to Billgenix Processor Service!"); // Default endpoint
 
 app.MapHub<CustomerTrafficHub>("/trafficHub"); // Map Hub, for .net6 map it above end point with app.MapHub<>
 //app.UseEndpoints(endpoints =>

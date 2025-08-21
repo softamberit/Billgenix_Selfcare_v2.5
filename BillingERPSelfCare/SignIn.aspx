@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="fonts/icomoon/icomoon.css" />
 
+        <script src="<%=ResolveUrl("js/jquery.js")%>"></script>
+
+
     <!-- Mian and Login css -->
     <link rel="stylesheet" href="css/main.css" />
     <style type="text/css">

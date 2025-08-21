@@ -30,7 +30,7 @@ namespace BillingERPSelfCare.Sales
             }
             if (pageLtl != null)
             {
-                pageLtl.Text = "Customer View";
+                pageLtl.Text = "LIVE TRAFFIC";
             }
         }
         #endregion
@@ -46,18 +46,17 @@ namespace BillingERPSelfCare.Sales
                 return ""; // return empty object if invalid
             }
 
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
 
             DBUtility objDB = new DBUtility();
             Hashtable ht = new Hashtable();
             ht.Add("CustomerID", cid);
             ht.Add("ConnectionId", connectionId);
-
-
             DataTable dt = objDB.GetDataByProc(ht, "sp_RequestTrafficData");
             ht.Clear();
-          
-            return "Success";
+             
+            return dt.Rows[0]["Feeadback"].ToString();
+
 
         }
 

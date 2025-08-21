@@ -41,13 +41,13 @@ namespace BillgenixTicketing.ApiIntigration
         }
 
 
-        public string GetMrtgGraphBase64(string cid)
+        public string GetMrtgGraphBase64(string cid,string type)
         {
 
 
             try
             {
-                HttpResponseMessage response = httpClient.GetAsync(string.Format("/api/Mrtg/GraphByCID?cid={0}", cid)).Result;
+                HttpResponseMessage response = httpClient.GetAsync(string.Format("/api/Mrtg/GraphByCID?cid={0}&type={1}", cid, type)).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = response.Content.ReadAsStringAsync().Result;

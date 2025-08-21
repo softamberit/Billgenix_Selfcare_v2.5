@@ -22,7 +22,7 @@ namespace BillgenixProcessorService.Processor.LiveTraffic;
                      .StartAt(DateTimeOffset.UtcNow.AddSeconds(2)) // Start 1 minute from now
                     //.StartAt(startAt)
                     .WithSimpleSchedule(schedule =>
-                        schedule.WithIntervalInSeconds(30).RepeatForever()));
+                        schedule.WithIntervalInSeconds(10).RepeatForever()));
 
 
         //ITrigger trigger = TriggerBuilder.Create()

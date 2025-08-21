@@ -14,6 +14,12 @@ namespace BillingERPSelfCare
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session[SessionInfo.PIN] != null)
+            {
+                Response.Redirect("DashBoard.aspx", false);
+            }
+
+
             divlogin.Visible = true;
             divotp.Visible = false;
             btnLogin.Visible = true;
@@ -53,7 +59,7 @@ namespace BillingERPSelfCare
                 DAUser objDa = new DAUser();
                 obj.LoginId = txtUserName.Text.Trim();
                 obj.Password = txtPassword.Text.Trim();
-                
+
 
                 var requestIP = GetUserIP();
                 int maxAttempts = 3;
@@ -75,6 +81,9 @@ namespace BillingERPSelfCare
                     Session.Add(SessionInfo.loginid, DTabLogin.Rows[0]["loginId"].ToString());
                     Session.Add(SessionInfo.PIN, Pin);
                     Session.Add(SessionInfo.CompanyName, DTabLogin.Rows[0]["CompanyName"].ToString());
+                    Session.Add(SessionInfo.IsAllowedGraph, DTabLogin.Rows[0]["IsAllowedGraph"].ToString());
+
+                    //IsAllowedGraph
                     string PublicIP = MachineDetector.GetUser_PublicIP();
                     Session.Add(SessionInfo.PublicIP, PublicIP);
                     if (GenerateAndSendOtp(Pin, mobileNumber, sms_media))
