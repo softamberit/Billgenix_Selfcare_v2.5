@@ -21,7 +21,7 @@ public class CustomerTrafficHub : Hub
     {
         if (ActiveUsers.TryRemove(Context.ConnectionId, out var cid))
         {
-            await Clients.Client(Context.ConnectionId).SendAsync("UserDisconnected", cid);
+            //await Clients.Client(Context.ConnectionId).SendAsync("UserDisconnected", cid);
             //await UpdateActiveUsers();
         }
 

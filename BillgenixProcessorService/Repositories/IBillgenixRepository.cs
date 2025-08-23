@@ -7,5 +7,5 @@ public interface IBillgenixRepository
     Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingTrafficRequest();
     Task<CustomerTrafficRequestDto> GetPendingTrafficRequest(string connectionId);
 
-    Task<int> UpdateTrafficRequestStatus(CustomerTrafficRequestDto request);
+    Task<int> UpdateTrafficRequestStatus(UpdateTrafficRequestDto request);
 }

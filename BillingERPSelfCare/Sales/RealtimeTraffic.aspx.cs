@@ -47,7 +47,6 @@ namespace BillingERPSelfCare.Sales
             }
 
             Thread.Sleep(1000);
-
             DBUtility objDB = new DBUtility();
             Hashtable ht = new Hashtable();
             ht.Add("CustomerID", cid);

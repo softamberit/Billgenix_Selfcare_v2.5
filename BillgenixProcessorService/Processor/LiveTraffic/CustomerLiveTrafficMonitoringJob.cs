@@ -45,7 +45,7 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
 
         var requests = await GetPendingRequests();
 
-   
+
         // string cid = "74039";
         //  _mkService.get
         //var username = Context.GetHttpContext()?.Request.Query["username"].ToString() ?? "Anonymous";
@@ -63,7 +63,7 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
                     //var traffic = _client.GetTrafficData(request.CustomerID);
                     //await _trafficHub.Clients.All.SendAsync("traffics", JsonSerializer.Serialize(traffic));
                     request.ProcessStatus = 1;
-                    await _repo.UpdateTrafficRequestStatus(request);
+                    await _repo.UpdateTrafficRequestStatus(new UpdateTrafficRequestDto { Id = request.Id, ProcessStatus = request.ProcessStatus });
                 }
                 else
                 {
@@ -99,17 +99,33 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
     {
         //
         int seconds = request.TrafficDurationInMenutes * 60;
+        float totalRx = 0;
+        float totalTx = 0;
+
         for (int i = 0; i < seconds; i++)
         {
             // Simulate traffic data retrieval
             var traffic = _client.GetTrafficData(request.CustomerID);
+            totalRx += traffic.Rx;
+            totalTx += traffic.Tx;
+            //traffic.AvgRx = (int)(totalRx / (i + 1));
+            //traffic.AvgTx = (int)(totalTx / (i + 1));
             await _trafficHub.Clients.Client(request.ConnectionId).SendAsync("traffics", JsonSerializer.Serialize(traffic));
+
             await Task.Delay(1000); // Simulate delay for each minute of traffic data
 
-
         }
+
+
+        int avgRx = (int)(totalRx / seconds);
+        int avgTx = (int)(totalTx / seconds);
+
+
         request.ProcessStatus = 2;
-        await _repo.UpdateTrafficRequestStatus(request);
+        await _repo.UpdateTrafficRequestStatus(new UpdateTrafficRequestDto { Id = request.Id, ProcessStatus = request.ProcessStatus, AvgRx = avgRx, AvgTx = avgTx });
+
+        await _trafficHub.Clients.Client(request.ConnectionId).SendAsync("traffic_finished", JsonSerializer.Serialize(new CustomerTraffic { AvgRx = avgRx, AvgTx = avgTx }));
+
     }
 
     private async Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingRequests()

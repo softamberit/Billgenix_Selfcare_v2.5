@@ -23,34 +23,34 @@
 
 
     <script>
-       
+
 
         $(document).ready(function () {
             var cid = $("#<%=hdnCustomerId.ClientID%>")[0].value;
             var baseHubUrl = $("#<%=hdnHubUrl.ClientID%>")[0].value;
 
             drawGraph(cid);
-            
+
             const connection = new signalR.HubConnectionBuilder()
                 .withUrl(baseHubUrl + "trafficHub?cid=" + cid + "")
                 .withAutomaticReconnect()
                 .build();
 
 
-           
+
             connection.on("UserConnected", function (data) {
-               
+
                 console.log("Connected: " + data);
                 RequestTrafficData(data, connection);
             });
             connection.on("traffics", function (traffic) {
                 var data = JSON.parse(traffic);
-               // console.log(data);
+                // console.log(data);
                 setData(data);
             });
-            connection.on("UpdateActiveUsers", function (message) {
+            connection.on("traffic_finished", function (avgTraffic) {
 
-                console.log(message);
+                console.log(avgTraffic);
 
             });
 
@@ -62,7 +62,7 @@
         var chart;
         function drawGraph(cid) {
 
-             
+
             Highcharts.setOptions({
                 global: {
                     useUTC: false
@@ -203,15 +203,15 @@
             });
         }
         function OnSuccess(response) {
-            console.log(response); 
-            
+            console.log(response);
+
 
             //setData(response.d);
         }
 
         function setData(traffic) {
 
-            
+
             let currentDate = new Date(traffic.Timestamp);
             //var currentDate = new Date(traffic.Timestamp);
             var rx = parseFloat(traffic.Rx);
@@ -264,11 +264,11 @@
                                 <div class="stats-widget-body">
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            
 
-                                            <div>Upload:<span style="color:green;font:bold" id="tx"></span></div>
-                                            <div>Download:<span style="color:blue;font:bold" id="rx"></span></div>
-                                            
+
+                                            <div>Upload:<span style="color: green; font: bold" id="rx"></span></div>
+                                            <div>Download:<span style="color: blue; font: bold" id="tx"></span></div>
+
                                         </div>
 
                                     </div>

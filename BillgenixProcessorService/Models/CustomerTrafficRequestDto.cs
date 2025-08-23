@@ -11,5 +11,17 @@ public class CustomerTrafficRequestDto
     public int ProcessStatus { get; set; }   // 0 = Pending, 1 = Processed (example)
     public DateTime? ProcessedTime { get; set; }  // nullable because it can be NULL
 
-    public string? ConnectionId { get; set; }  
+    public string? ConnectionId { get; set; }
+}
+
+public class UpdateTrafficRequestDto
+{
+    public int Id { get; set; }
+
+    public int ProcessStatus { get; set; }   // 0 = Pending, 1 = Processed (example)
+
+    public int AvgRx { get; set; }  // Average received traffic in bytes per second
+    public int AvgTx { get; set; }  // Average received traffic in bytes per second
+
+
 }

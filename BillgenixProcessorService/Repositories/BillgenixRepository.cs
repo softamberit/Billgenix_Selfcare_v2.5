@@ -26,10 +26,10 @@ public class BillgenixRepository : IBillgenixRepository
 
     }
 
-    public async Task<int> UpdateTrafficRequestStatus(CustomerTrafficRequestDto request)
+    public async Task<int> UpdateTrafficRequestStatus(UpdateTrafficRequestDto request)
     {
         using var conn = _connectionFactory.CreateConnection();
-        return await conn.ExecuteScalarAsync<int>("spUpdateTrafficRequestStatus", new { request.Id, request.ProcessStatus }, commandType: CommandType.StoredProcedure);
+        return await conn.ExecuteScalarAsync<int>("spUpdateTrafficRequestStatus", request, commandType: CommandType.StoredProcedure);
     }
 
     public async Task<CustomerTrafficRequestDto> GetPendingTrafficRequest(string ConnectionId)
