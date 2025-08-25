@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillingERPSelfCare", "Billi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportBilling", "ReportBilling\ReportBilling.csproj", "{C3C2B8ED-A49A-428D-B60A-BE796941A99D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillgenixProcessorService", "BillgenixProcessorService\BillgenixProcessorService.csproj", "{18146CC6-4C15-DAB0-04F1-4C08C5475DA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficProcessorService", "BillgenixProcessorService\TrafficProcessorService.csproj", "{18146CC6-4C15-DAB0-04F1-4C08C5475DA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

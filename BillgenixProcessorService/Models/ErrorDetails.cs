@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BillgenixProcessorService.Models;
+namespace TrafficProcessorService.Models;
 
 public class ErrorDetails
 {

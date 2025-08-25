@@ -1,9 +1,9 @@
-﻿using BillgenixProcessorService.Extensions;
-using BillgenixProcessorService.Models;
-using Common.Infrastructure.Models;
+﻿using Common.Infrastructure.Models;
 using Newtonsoft.Json;
+using TrafficProcessorService.Extensions;
+using TrafficProcessorService.Models;
 
-namespace BillgenixProcessorService.ApiIntegration
+namespace TrafficProcessorService.ApiIntegration
 {
     public class BillgenixRadiusClient
     {

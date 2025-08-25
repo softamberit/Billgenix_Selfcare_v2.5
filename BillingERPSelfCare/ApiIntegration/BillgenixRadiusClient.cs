@@ -77,9 +77,7 @@ namespace BillgenixTicketing.ApiIntigration
                     if (!string.IsNullOrEmpty(responseBody))
                     {
                         return JsonConvert.DeserializeObject<CustomerTraffic>(responseBody);
-
                     }
-
                 }
             }
             catch (Exception)

@@ -1,10 +1,11 @@
-﻿using BillgenixProcessorService.Models;
-using Common.Infrastructure.Common;
+﻿using Common.Infrastructure.Common;
 using System.Data;
 using System.Data.Common;
 using Dapper;
+using TrafficProcessorService.Models;
+using TrafficProcessorService.Repositories;
 
-namespace BillgenixProcessorService.Repositories;
+namespace TrafficProcessorService.Repositories;
 
 public class BillgenixRepository : IBillgenixRepository
 {
@@ -19,10 +20,10 @@ public class BillgenixRepository : IBillgenixRepository
 
     }
 
-    public async Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingTrafficRequest()
+    public async Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingTrafficRequest(string runServerName)
     {
         using var conn = _connectionFactory.CreateConnection();
-        return await conn.QueryAsync<CustomerTrafficRequestDto>("sp_getPendingTrafficRequest", commandType: CommandType.StoredProcedure);
+        return await conn.QueryAsync<CustomerTrafficRequestDto>("sp_getPendingTrafficRequest",new { runServerName }, commandType: CommandType.StoredProcedure);
 
     }
 
@@ -32,9 +33,9 @@ public class BillgenixRepository : IBillgenixRepository
         return await conn.ExecuteScalarAsync<int>("spUpdateTrafficRequestStatus", request, commandType: CommandType.StoredProcedure);
     }
 
-    public async Task<CustomerTrafficRequestDto> GetPendingTrafficRequest(string ConnectionId)
+    public async Task<CustomerTrafficRequestDto> GetPendingTrafficRequest(string ConnectionId,string runServerName)
     {
         using var conn = _connectionFactory.CreateConnection();
-        return await conn.QueryFirstAsync<CustomerTrafficRequestDto>("sp_getPendingTrafficRequest",new { ConnectionId }, commandType: CommandType.StoredProcedure);
+        return await conn.QueryFirstAsync<CustomerTrafficRequestDto>("sp_getPendingTrafficRequest",new { runServerName,ConnectionId }, commandType: CommandType.StoredProcedure);
     }
 }

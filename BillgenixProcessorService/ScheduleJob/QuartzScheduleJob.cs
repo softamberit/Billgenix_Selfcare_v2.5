@@ -1,7 +1,7 @@
 ﻿using Quartz.Impl;
 using Quartz;
 
-namespace BillgenixProcessorService.ScheduleJob
+namespace TrafficProcessorService.ScheduleJob
 {
     public class QuartzScheduleJob
     {

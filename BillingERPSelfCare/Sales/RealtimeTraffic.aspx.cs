@@ -32,12 +32,14 @@ namespace BillingERPSelfCare.Sales
             {
                 pageLtl.Text = "LIVE TRAFFIC";
             }
+
+            
         }
         #endregion
 
 
         [WebMethod]
-        public static string RequestTrafficData(string cid, string connectionId)
+        public static string RequestTrafficData(string cid, string connectionId,string runServerName)
         {
             //var traffic = new CustomerTraffic();
 
@@ -46,11 +48,15 @@ namespace BillingERPSelfCare.Sales
                 return ""; // return empty object if invalid
             }
 
+           
+
             Thread.Sleep(1000);
             DBUtility objDB = new DBUtility();
             Hashtable ht = new Hashtable();
             ht.Add("CustomerID", cid);
             ht.Add("ConnectionId", connectionId);
+            ht.Add("RunServerName", runServerName);
+
             DataTable dt = objDB.GetDataByProc(ht, "sp_RequestTrafficData");
             ht.Clear();
              

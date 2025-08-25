@@ -1,4 +1,4 @@
-﻿namespace BillgenixProcessorService.Models
+﻿namespace TrafficProcessorService.Models
 {
     public class CustomerTraffic
     {

@@ -1,17 +1,26 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using System.Collections.Concurrent;
+using TrafficProcessorService.Extensions;
 
-namespace BillgenixProcessorService.Processor.LiveTraffic;
+namespace TrafficProcessorService.Processor.LiveTraffic;
 
 public class CustomerTrafficHub : Hub
 {
     private static readonly ConcurrentDictionary<string, string> ActiveUsers = new();
+    private AppSettingsSevice _appSettings;
+
+    public CustomerTrafficHub(AppSettingsSevice appSettings)
+    {
+        _appSettings = appSettings;
+
+    }
     public async override Task OnConnectedAsync()
     {
+        
         var cid = Context.GetHttpContext()?.Request.Query["cid"].ToString() ?? "Anonymous";
         ActiveUsers[Context.ConnectionId] = cid;
-        var response = new { connectionId = Context.ConnectionId, cid = cid };
+        var response = new { connectionId = Context.ConnectionId, cid = cid, runServerName = _appSettings.RunServerName };
         await Clients.Client(Context.ConnectionId).SendAsync("UserConnected", JsonConvert.SerializeObject(response));
         // await UpdateActiveUsers(Context.ConnectionId, cid);
         await base.OnConnectedAsync();

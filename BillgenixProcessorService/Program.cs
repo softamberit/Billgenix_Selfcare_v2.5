@@ -1,13 +1,13 @@
-using BillgenixProcessorService.ApiIntegration;
-using BillgenixProcessorService.Extensions;
-using BillgenixProcessorService.Models;
-using BillgenixProcessorService.Processor.LiveTraffic;
-using BillgenixProcessorService.Repositories;
 using Common.Infrastructure.Common;
 using Common.Infrastructure.Models;
 using Hangfire;
 using Hangfire.Dashboard;
 using Quartz;
+using TrafficProcessorService.ApiIntegration;
+using TrafficProcessorService.Extensions;
+using TrafficProcessorService.Models;
+using TrafficProcessorService.Processor.LiveTraffic;
+using TrafficProcessorService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,8 +33,16 @@ var appSettings = appSettingsSection.Get<AppSettings>();
 appSettings.ConnectionString_billgenix = builder.Configuration.GetConnectionString("Billgenix");
 var AppSettingsService = new AppSettingsSevice
 {
-    baseUrlRadiusAPI = builder.Configuration.GetSection("AppSettings:baseUrlRadiusAPI").Value!
+    baseUrlRadiusAPI = builder.Configuration.GetSection("AppSettings:baseUrlRadiusAPI").Value!,
+    RunServerName = builder.Configuration.GetSection("AppSettings:runServerName").Value!
+
 };
+
+
+if (string.IsNullOrEmpty(AppSettingsService.RunServerName))
+{
+    throw new Exception("Please define a run server name and it will will be unique");
+}
 //appSettings.ConnectionString_billgenix = builder.Configuration.GetSection("AppSettings:baseUrlRadiusAPI");
 
 var billgenixDb = new DbSettings
@@ -106,26 +114,23 @@ app.UseAuthorization();
 //{
 //    Authorization = new[] { new AuthorizationFilter { Users = "admin, superuser" ,Roles=""}, }, // Allow all users to access the dashboard
 //};
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseHangfireDashboard("/amber_hangfire", new DashboardOptions
+    {
+        IsReadOnlyFunc = (DashboardContext dashboardContext) =>
+        {
+            var context = dashboardContext.GetHttpContext();
+            return !context.User.IsInRole("Admin");
+        }
+    });
+    app.MapHangfireDashboard();
 
-//app.UseHangfireDashboard("/amber_hangfire", new DashboardOptions
-//{
-//    IsReadOnlyFunc = (DashboardContext dashboardContext) =>
-//    {
-//        var context = dashboardContext.GetHttpContext();
-//        return !context.User.IsInRole("Admin");
-//    }
-//});
-//app.MapHangfireDashboard();
+}
 
-app.MapGet("/", () => "Welcome to Billgenix Processor Service!"); // Default endpoint
+
+app.MapGet("/", () => "Welcome to Customer Usage traffic processor service!"); // Default endpoint
 
 app.MapHub<CustomerTrafficHub>("/trafficHub"); // Map Hub, for .net6 map it above end point with app.MapHub<>
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapHub<CustomerTrafficHub>("/trafficHub"); // Map Hub, for .net6 map it above end point with app.MapHub<>
-
-//    //endpoints.MapControllerRoute(
-//    //    name: "default",
-//    //    pattern: "hangfire");
-//});
 app.Run();

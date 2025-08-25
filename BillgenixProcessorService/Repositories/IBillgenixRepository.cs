@@ -1,11 +1,11 @@
-﻿using BillgenixProcessorService.Models;
+﻿using TrafficProcessorService.Models;
 
-namespace BillgenixProcessorService.Repositories;
+namespace TrafficProcessorService.Repositories;
 
 public interface IBillgenixRepository
 {
-    Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingTrafficRequest();
-    Task<CustomerTrafficRequestDto> GetPendingTrafficRequest(string connectionId);
+    Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingTrafficRequest(string runServerName);
+    Task<CustomerTrafficRequestDto> GetPendingTrafficRequest(string connectionId,string runServerName);
 
     Task<int> UpdateTrafficRequestStatus(UpdateTrafficRequestDto request);
 }

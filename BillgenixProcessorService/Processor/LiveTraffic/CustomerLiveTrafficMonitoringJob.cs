@@ -1,13 +1,15 @@
-﻿using BillgenixProcessorService.ApiIntegration;
-using BillgenixProcessorService.Models;
-using BillgenixProcessorService.Repositories;
-using Hangfire;
+﻿using Hangfire;
 using Microsoft.AspNetCore.SignalR;
 using Quartz;
 using System.Security.Cryptography;
 using System.Text.Json;
+using TrafficProcessorService.ApiIntegration;
+using TrafficProcessorService.Extensions;
+using TrafficProcessorService.Models;
+using TrafficProcessorService.Processor.LiveTraffic;
+using TrafficProcessorService.Repositories;
 
-namespace BillgenixProcessorService.Processor.LiveTraffic;
+namespace TrafficProcessorService.Processor.LiveTraffic;
 
 public sealed class CustomerLiveTrafficMonitoringJob : IJob
 {
@@ -16,14 +18,16 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
     private IHubContext<CustomerTrafficHub> _trafficHub { get; }
     private int dataId = 0;
     private IBillgenixRepository _repo;
+    private AppSettingsSevice _appSettings;
     public CustomerLiveTrafficMonitoringJob(BillgenixRadiusClient client,
-        ILogger<CustomerLiveTrafficMonitoringJob> logger, IHubContext<CustomerTrafficHub> trafficHub, IBillgenixRepository repo)
+        ILogger<CustomerLiveTrafficMonitoringJob> logger, IHubContext<CustomerTrafficHub> trafficHub, IBillgenixRepository repo, AppSettingsSevice appSettings)
     {
 
         _logger = logger;
         _trafficHub = trafficHub;
         _client = client;
         _repo = repo;
+        _appSettings= appSettings;
     }
 
     //_trafficHub.Clients.Client(request.ConnectionId)
@@ -32,7 +36,7 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
     public async Task TrafficStartAsync(string connectionId, string message)
     {
         //  await _trafficHub.Clients.Client(connectionId).SendAsync("ReceiveMessage", message);
-        var requests = await GetPendingRequests(connectionId);
+        var requests = await GetPendingRequests(connectionId, _appSettings.RunServerName);
         BackgroundJob.Enqueue(() => ProcessTrafficAsync(requests));
 
     }
@@ -43,7 +47,7 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
         _logger.LogInformation("User Live Traffic Monitoring Job started at {Time}", DateTime.Now);
 
 
-        var requests = await GetPendingRequests();
+        var requests = await GetPendingRequests(_appSettings.RunServerName);
 
 
         // string cid = "74039";
@@ -128,16 +132,16 @@ public sealed class CustomerLiveTrafficMonitoringJob : IJob
 
     }
 
-    private async Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingRequests()
+    private async Task<IEnumerable<CustomerTrafficRequestDto>> GetPendingRequests(string runServerName)
     {
 
-        return await _repo.GetPendingTrafficRequest();
+        return await _repo.GetPendingTrafficRequest(runServerName);
 
     }
-    private async Task<CustomerTrafficRequestDto> GetPendingRequests(string connectionId)
+    private async Task<CustomerTrafficRequestDto> GetPendingRequests(string connectionId, string runServerName)
     {
 
-        return await _repo.GetPendingTrafficRequest(connectionId);
+        return await _repo.GetPendingTrafficRequest(connectionId, runServerName);
 
     }
 

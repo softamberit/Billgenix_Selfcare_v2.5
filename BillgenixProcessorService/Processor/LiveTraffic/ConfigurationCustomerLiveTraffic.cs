@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
 using Quartz;
+using TrafficProcessorService.Processor.LiveTraffic;
 
-namespace BillgenixProcessorService.Processor.LiveTraffic;
+namespace TrafficProcessorService.Processor.LiveTraffic;
  public sealed class ConfigurationCustomerLiveTraffic()
     : IConfigureOptions<QuartzOptions>
 {
