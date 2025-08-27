@@ -40,7 +40,7 @@
     </div>
     <footer class="main-footer no-bdr fixed-btm">
         <div class="container">
-            Copyright &copy 2019 Amber Software Solutions Ltd.
+            Copyright &copy 2025 Amber Software Solutions Ltd.
         </div>
     </footer>
 </body>

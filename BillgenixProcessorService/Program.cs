@@ -114,6 +114,8 @@ app.UseAuthorization();
 //{
 //    Authorization = new[] { new AuthorizationFilter { Users = "admin, superuser" ,Roles=""}, }, // Allow all users to access the dashboard
 //};
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

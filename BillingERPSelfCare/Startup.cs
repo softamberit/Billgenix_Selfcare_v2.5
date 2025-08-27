@@ -7,7 +7,7 @@ namespace BillingERPSelfCare
     public partial class Startup {
         public void Configuration(IAppBuilder app) {
             ConfigureAuth(app);
-            app.MapSignalR();
+           // app.MapSignalR();
         }
     }
 }
